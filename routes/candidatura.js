@@ -26,6 +26,42 @@ router.post('/', function (req, res, next) {
   });
 })
 
+// Rota GET para consultar um usuário
+router.get('/id_empresa/:id', function(req, res){
+  // Recebendo os parâmetros de um query string
+  var idemp = req.params.id;
+  // Fazendo uma consulta no banco de dados
+  var params = {id_empresa: idemp};
+  Candidatura.find(params,function(err, candidatura){
+      if (err) return next(err);
+      res.json(candidatura); // retorna os curriculo
+  });
+});
+
+// Rota GET para consultar um usuário
+router.get('/id_curriculo/:id', function(req, res){
+  // Recebendo os parâmetros de um query string
+  var idcur = req.params.id;
+  // Fazendo uma consulta no banco de dados
+  var params = {id_curriculo: idcur};
+  Candidatura.find(params,function(err, candidatura){
+      if (err) return next(err);
+      res.json(candidatura); // retorna os curriculo
+  });
+});
+
+// Rota GET para consultar um usuário
+router.get('/codaluno/:codaluno', function(req, res){
+  // Recebendo os parâmetros de um query string
+  var cod = req.params.codaluno;
+  // Fazendo uma consulta no banco de dados
+  var params = {codaluno: cod};
+  Candidatura.find(params,function(err, candidatura){
+      if (err) return next(err);
+      res.json(candidatura); // retorna os curriculo
+  });
+});
+
 // rota para atualizar no MongoDB uma candidatura
 router.put('/:id', function (req, res, next) {
     Candidatura.findByIdAndUpdate(req.params.id, req.body, function (err, post) {

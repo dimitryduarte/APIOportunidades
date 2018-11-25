@@ -18,6 +18,18 @@ router.get('/:id', function (req, res, next) {
   });
 })
 
+// Rota GET para consultar um usuário
+router.get('/cnpj/:cnpj', function(req, res){
+  // Recebendo os parâmetros de um query string
+  var ncnpj = req.params.cnpj;
+  // Fazendo uma consulta no banco de dados
+  var params = {cnpj: ncnpj};
+  Empresa.find(params,function(err, empresa){
+      if (err) return next(err);
+      res.json(empresa); // retorna os curriculo
+  });
+});
+
 // rota para inserir no MongoDB uma empresa 
 router.post('/', function (req, res, next) {
   Empresa.create(req.body, function (err, post) {
