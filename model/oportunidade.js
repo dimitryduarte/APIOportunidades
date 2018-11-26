@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var OportunidadeSchema = new mongoose.Schema({
     id_empresa: String,
     empresa: String,
+    cnpj: String,
     periodo: String,
     tipo: String,
     area: String,

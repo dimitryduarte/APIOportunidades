@@ -18,14 +18,13 @@ router.get('/:id', function (req, res, next) {
   });
 })
 
-
 // Rota GET para consultar um usuário
-router.get('/id_empresa/:id', function(req, res){
+router.get('/cnpj/:cnpj', function(req, res){
   // Recebendo os parâmetros de um query string
-  var idemp = req.params.id;
+  var cnpj = req.params.cnpj;
   // Fazendo uma consulta no banco de dados
-  var params = {id_empresa: idemp};
-  Oportunidade.find(params,function(err, oportunidade){
+  var params = {cnpj: cnpj};
+  Oportunidade.findOne(params,function(err, oportunidade){
       if (err) return next(err);
       res.json(oportunidade); // retorna os curriculo
   });
