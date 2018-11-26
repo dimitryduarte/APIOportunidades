@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 // cria uma variável que representa um schema no noSQL
 var OportunidadeSchema = new mongoose.Schema({
     id_empresa: String,
+    empresa: String,
     periodo: String,
     tipo: String,
     area: String,
