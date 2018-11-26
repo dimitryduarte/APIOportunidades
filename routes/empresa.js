@@ -24,7 +24,7 @@ router.get('/cnpj/:cnpj', function(req, res){
   var ncnpj = req.params.cnpj;
   // Fazendo uma consulta no banco de dados
   var params = {cnpj: ncnpj};
-  Empresa.find(params,function(err, empresa){
+  Empresa.findOne(params,function(err, empresa){
       if (err) return next(err);
       res.json(empresa); // retorna os curriculo
   });
